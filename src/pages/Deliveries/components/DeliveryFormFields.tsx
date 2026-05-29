@@ -70,22 +70,23 @@ export default function DeliveryFormFields({
       />
 
       {!disablepickupDateField && (
-        <Controller
-          control={control}
-          name="pickupDate"
-          rules={{ required: "Data ritiro obbligatoria" }}
-          render={({ field }) => (
-            <TextField
-              {...field}
-              type="date"
-              fullWidth
-              label="Data Ritiro"
-              error={!!errors.pickupDate}
-              helperText={errors.pickupDate?.message}
-              InputLabelProps={{ shrink: true }}
-            />
-          )}
-        />
+        <></>
+        // <Controller
+        //   control={control}
+        //   name="pickupDate"
+        //   rules={{ required: "Data ritiro obbligatoria" }}
+        //   render={({ field }) => (
+        //     <TextField
+        //       {...field}
+        //       type="date"
+        //       fullWidth
+        //       label="Data Ritiro"
+        //       error={!!errors.pickupDate}
+        //       helperText={errors.pickupDate?.message}
+        //       InputLabelProps={{ shrink: true }}
+        //     />
+        //   )}
+        // />
       )}
 
       {!disableDeliveryDateField && (
