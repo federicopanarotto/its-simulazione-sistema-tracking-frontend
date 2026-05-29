@@ -15,6 +15,7 @@ import type { ICustomer } from "../api/ICustomer";
 import type { DialogActionsType } from "../../../shared/interfaces/dialog/DialogActionsType";
 import { useSnackbar } from "../../../context/SnackbarContext";
 import { customerApi } from "../api/customerApi";
+import type { ApiError } from "../../../shared/api/ApiError";
 
 interface DeleteProps {
   customer?: ICustomer;
@@ -34,8 +35,8 @@ function DeleteCustomerDialog({ customer }: DeleteProps, ref: ForwardedRef<Dialo
       await deleteCustomer((customer.id as any) as any);
       showSnackbar("Cliente eliminato con successo", "success");
       closeDialog(ref);
-    } catch (error: any) {
-      showSnackbar(error.message || "Errore durante l'eliminazione", "error");
+    } catch (error: ApiError | any) {
+      showSnackbar(error.response?.data?.message || "Errore durante l'eliminazione", "error");
     }
   };
 
