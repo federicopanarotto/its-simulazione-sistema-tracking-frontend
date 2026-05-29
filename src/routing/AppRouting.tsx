@@ -9,6 +9,7 @@ import RegistrationPage from "../pages/Registration/RegistrationPage";
 import CustomersPage from "../pages/Customers/CustomersPage";
 import StatisticsPage from "../pages/Statistics/StatisticsPage";
 import DeliveriesPage from "../pages/Deliveries/DeliveriesPage";
+import { TrackingPage } from "../pages/Tracking/TrackingPage";
 
 function AppRouting() {
   return (
@@ -16,6 +17,8 @@ function AppRouting() {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegistrationPage />} />
+
+        <Route path="/tracking" element={<TrackingPage />} />
 
         <Route element={<AuthUserGuard />}>
           <Route element={<Layout />}>
