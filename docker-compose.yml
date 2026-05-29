@@ -1,0 +1,11 @@
+services:
+  lucyfashion-frontend:
+    image: lucyfashion-frontend:latest
+    container_name: lucyfashion-frontend
+    restart: unless-stopped
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true 
