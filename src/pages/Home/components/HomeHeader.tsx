@@ -10,6 +10,7 @@ import {
 import { useNavigate } from "react-router";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import LoginIcon from "@mui/icons-material/Login";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import TrackingIcon from "@mui/icons-material/SpatialTracking";
 
 export const HomeHeader = () => {
@@ -45,16 +46,24 @@ export const HomeHeader = () => {
           {/* Actions */}
           <Stack direction="row" spacing={2}>
             <Button
-              variant="outlined"
-              color="inherit"
+              variant="contained"
+              color="secondary"
               startIcon={<TrackingIcon />}
               onClick={() => navigate("/tracking")}
             >
               Traccia Pacco
             </Button>
             <Button
-              variant="contained"
-              color="secondary"
+              variant="outlined"
+              color="inherit"
+              startIcon={<PersonAddIcon />}
+              onClick={() => navigate("/register")}
+            >
+              Registrati
+            </Button>
+            <Button
+              variant="outlined"
+              color="inherit"
               startIcon={<LoginIcon />}
               onClick={() => navigate("/login")}
             >
