@@ -20,6 +20,8 @@ interface FormFieldsProps {
   control: Control<DeliveryFormValues>;
   errors: FieldErrors<DeliveryFormValues>;
   disableStatusField?: boolean;
+  disablepickupDateField?: boolean;
+  disableDeliveryDateField?: boolean;
 }
 
 const statusOptions: { value: DeliveryStatus; label: string }[] = [
@@ -34,6 +36,8 @@ export default function DeliveryFormFields({
   control,
   errors,
   disableStatusField = false,
+  disablepickupDateField = false,
+  disableDeliveryDateField = false,
 }: FormFieldsProps) {
   const { data: customers, isLoading: isLoadingCustomers } =
     customerApi.useGetList();
@@ -65,48 +69,52 @@ export default function DeliveryFormFields({
         )}
       />
 
-      <Controller
-        control={control}
-        name="pickupDate"
-        rules={{ required: "Data ritiro obbligatoria" }}
-        render={({ field }) => (
-          <TextField
-            {...field}
-            type="date"
-            fullWidth
-            label="Data Ritiro"
-            error={!!errors.pickupDate}
-            helperText={errors.pickupDate?.message}
-            InputLabelProps={{ shrink: true }}
-          />
-        )}
-      />
+      {!disablepickupDateField && (
+        <Controller
+          control={control}
+          name="pickupDate"
+          rules={{ required: "Data ritiro obbligatoria" }}
+          render={({ field }) => (
+            <TextField
+              {...field}
+              type="date"
+              fullWidth
+              label="Data Ritiro"
+              error={!!errors.pickupDate}
+              helperText={errors.pickupDate?.message}
+              InputLabelProps={{ shrink: true }}
+            />
+          )}
+        />
+      )}
 
-      <Controller
-        control={control}
-        name="deliveryDate"
-        rules={{
-          required: "Data consegna obbligatoria",
-          validate: (value) => {
-            if (!pickupDate || !value) return true;
-            return (
-              new Date(value) >= new Date(pickupDate) ||
-              "La data consegna deve essere uguale o successiva alla data di ritiro"
-            );
-          },
-        }}
-        render={({ field }) => (
-          <TextField
-            {...field}
-            type="date"
-            fullWidth
-            label="Data Consegna"
-            error={!!errors.deliveryDate}
-            helperText={errors.deliveryDate?.message}
-            InputLabelProps={{ shrink: true }}
-          />
-        )}
-      />
+      {!disableDeliveryDateField && (
+        <Controller
+          control={control}
+          name="deliveryDate"
+          rules={{
+            required: "Data consegna obbligatoria",
+            validate: (value) => {
+              if (!pickupDate || !value) return true;
+              return (
+                new Date(value) >= new Date(pickupDate) ||
+                "La data consegna deve essere uguale o successiva alla data di ritiro"
+              );
+            },
+          }}
+          render={({ field }) => (
+            <TextField
+              {...field}
+              type="date"
+              fullWidth
+              label="Data Consegna"
+              error={!!errors.deliveryDate}
+              helperText={errors.deliveryDate?.message}
+              InputLabelProps={{ shrink: true }}
+            />
+          )}
+        />
+      )}
 
       {!disableStatusField && (
         <Controller

@@ -123,7 +123,7 @@ export default function DeliveryTable({ customerId = null, status = "" }: Delive
                     <Typography variant="body2">{`${delivery.customer?.address}, ${delivery.customer?.city} (${delivery.customer?.province})`}</Typography>
                   </TableCell>
                     <TableCell>{delivery.deliveryKey}</TableCell>
-                    <TableCell>{new Date(delivery.pickupDate).toLocaleDateString("it-IT")}</TableCell>
+                    <TableCell>{delivery.pickupDate ? new Date(delivery.pickupDate).toLocaleDateString("it-IT") : "-"}</TableCell>
                     <TableCell>{delivery.deliveryDate ? new Date(delivery.deliveryDate).toLocaleDateString("it-IT") : "-"}</TableCell>
                     <TableCell>
                       <Chip label={statusData.label} color={statusData.color} size="small" sx={{ borderRadius: 2 }} />

@@ -4,7 +4,6 @@ import { useSnackbar } from "../../../context/SnackbarContext";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import FormWrapper from "../../../shared/ui/form/FormWrapper";
 import { deliveryApi } from "../api/deliveryApi";
-import type { DeliveryStatus } from "../api/IDelivery";
 
 interface DeliveryCreateFormProps {
   onSuccess?: () => void;
@@ -33,9 +32,6 @@ export function DeliveryCreateForm({ onSuccess }: DeliveryCreateFormProps) {
     try {
       const payload = {
         customer: data.customer?.id ?? "",
-        pickupDate: new Date(data.pickupDate),
-        deliveryDate: new Date(data.deliveryDate),
-        status: data.status as DeliveryStatus,
       };
 
       await createDelivery(payload as any);
@@ -50,7 +46,7 @@ export function DeliveryCreateForm({ onSuccess }: DeliveryCreateFormProps) {
   return (
     <Card sx={{ p: 4, width: "100%", background: (t) => t.palette.background.default }}>
       <FormWrapper handleSubmit={handleSubmit(onSubmit)}>
-        <DeliveryFormFields control={control} errors={errors} disableStatusField/>
+        <DeliveryFormFields control={control} errors={errors} disableStatusField disablepickupDateField disableDeliveryDateField />
 
         <Button type="submit" variant="contained" fullWidth disabled={isPending} sx={{ mt: 3, height: 55 }}>
           {isPending ? <CircularProgress size={24} color="inherit" /> : "Crea Consegna"}
