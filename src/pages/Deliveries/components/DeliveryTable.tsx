@@ -99,7 +99,7 @@ export default function DeliveryTable({ customerId = null, status = "" }: Delive
           <Table sx={{ minWidth: 650 }}>
             <TableHead>
               <TableRow sx={{ bgcolor: "background.default" }}>
-                {["Cliente", "Tracking", "Ritiro", "Consegna", "Stato", "Azioni"].map((header) => (
+                {["Cliente", "Indirizzo", "Tracking", "Ritiro", "Consegna", "Stato", "Azioni"].map((header) => (
                   <TableCell key={header} sx={{ fontWeight: 700, color: "text.primary" }}>
                     {header}
                   </TableCell>
@@ -119,6 +119,9 @@ export default function DeliveryTable({ customerId = null, status = "" }: Delive
                         {customerName || "-"}
                       </Typography>
                     </TableCell>
+                     <TableCell>
+                    <Typography variant="body2">{`${delivery.customer?.address}, ${delivery.customer?.city} (${delivery.customer?.province})`}</Typography>
+                  </TableCell>
                     <TableCell>{delivery.deliveryKey}</TableCell>
                     <TableCell>{new Date(delivery.pickupDate).toLocaleDateString("it-IT")}</TableCell>
                     <TableCell>{delivery.deliveryDate ? new Date(delivery.deliveryDate).toLocaleDateString("it-IT") : "-"}</TableCell>

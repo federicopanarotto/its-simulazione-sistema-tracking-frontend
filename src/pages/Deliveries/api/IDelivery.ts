@@ -4,7 +4,7 @@ export type DeliveryStatus = 'in_deposito' | 'in_consegna' | 'consegnata' | 'in_
 
 export interface IDelivery {
   id: string;
-  customer: ICustomer | string;
+  customer: ICustomer;
   pickupDate: Date;
   deliveryDate: Date;
   deliveryKey: string;
