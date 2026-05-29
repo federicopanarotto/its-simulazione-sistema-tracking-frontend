@@ -65,7 +65,7 @@ function LoginForm({ successLogin }: LoginFormProps) {
     >
       <FormWrapper handleSubmit={handleSubmit(onSubmit)}>
         <Stack sx={{ width: 300 }}>
-          <Typography variant="h2" textAlign={"center"} sx={{ mb: 2 }}>
+          <Typography variant="h3" textAlign={"center"} sx={{ mb: 3 }}>
             Accedi
           </Typography>
           {/* Email */}

@@ -81,7 +81,7 @@ function RegistrationForm({ successRegistration }: RegistrationFormProps) {
       <CardContent>
         <FormWrapper handleSubmit={handleSubmit(onSubmit)}>
           <Stack sx={{ width: 300, gap: 1 }}>
-            <Typography variant="h2" textAlign={"center"} sx={{ mb: 2 }}>
+            <Typography variant="h3" textAlign={"center"} sx={{ mb: 3 }}>
               Registrati
             </Typography>
             {/* First Name */}
