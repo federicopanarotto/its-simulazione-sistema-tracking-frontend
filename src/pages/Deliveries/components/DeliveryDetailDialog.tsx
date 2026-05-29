@@ -15,20 +15,20 @@ function DeliveryDetailDialog({ delivery }: DeliveryDetailDialogProps, ref: Forw
       <DialogTitle>Dettaglio Consegna</DialogTitle>
       <Divider />
       <DialogContent sx={{ py: 2 }}>
-        <Stack spacing={1}>
-          <Typography variant="subtitle2">Cliente</Typography>
+        <Stack spacing={1} sx={{color: 'text.primary'}}>
+          <Typography variant="subtitle2" color="primary">Cliente</Typography>
           <Typography>{typeof delivery?.customer === "string" ? delivery?.customer : delivery?.customer?.name}</Typography>
 
-          <Typography variant="subtitle2">Tracking</Typography>
+          <Typography variant="subtitle2" color="primary">Tracking</Typography>
           <Typography>{delivery?.deliveryKey ?? "-"}</Typography>
 
-          <Typography variant="subtitle2">Data ritiro</Typography>
+          <Typography variant="subtitle2" color="primary">Data ritiro</Typography>
           <Typography>{delivery ? new Date(delivery.pickupDate).toLocaleDateString("it-IT") : "-"}</Typography>
 
-          <Typography variant="subtitle2">Data consegna</Typography>
+          <Typography variant="subtitle2" color="primary">Data consegna</Typography>
           <Typography>{delivery ? new Date(delivery.deliveryDate).toLocaleDateString("it-IT") : "-"}</Typography>
 
-          <Typography variant="subtitle2">Stato</Typography>
+          <Typography variant="subtitle2" color="primary">Stato</Typography>
           <Typography sx={{ textTransform: "capitalize" }}>{delivery?.status ?? "-"}</Typography>
         </Stack>
       </DialogContent>
