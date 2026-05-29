@@ -15,6 +15,8 @@ const getStatusColor = (
       return "success";
     case "in_consegna":
       return "primary";
+    case "da_ritirare":
+      return "warning";
     case "in_giacenza":
       return "warning";
     case "in_deposito":
@@ -30,6 +32,8 @@ const getStatusLabel = (status?: DeliveryStatus): string => {
       return "Consegnata";
     case "in_consegna":
       return "In Consegna";
+    case "da_ritirare":
+      return "Da ritirare";
     case "in_giacenza":
       return "In Giacenza";
     case "in_deposito":
@@ -95,6 +99,12 @@ export const TrackingResults = ({ data }: TrackingResultsProps) => {
         {data.status === "in_consegna" && (
           <Alert severity="info">
             → Il tuo pacco è in transito verso la destinazione finale.
+          </Alert>
+        )}
+
+        {data.status === "da_ritirare" && (
+          <Alert severity="warning">
+            📍 Il pacco è pronto per essere ritirato presso il punto di consegna.
           </Alert>
         )}
 

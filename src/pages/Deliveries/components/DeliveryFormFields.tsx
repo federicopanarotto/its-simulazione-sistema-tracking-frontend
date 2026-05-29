@@ -24,6 +24,7 @@ interface FormFieldsProps {
 
 const statusOptions: { value: DeliveryStatus; label: string }[] = [
   { value: "in_deposito", label: "In deposito" },
+  { value: "da_ritirare", label: "Da ritirare" },
   { value: "in_consegna", label: "In consegna" },
   { value: "consegnata", label: "Consegnata" },
   { value: "in_giacenza", label: "In giacenza" },

@@ -18,13 +18,14 @@ interface UpdateDeliveryStatusDialogProps {
 
 const statusOptions: Array<{ value: DeliveryStatus; label: string }> = [
   { value: "in_deposito", label: "In deposito" },
+  { value: "da_ritirare", label: "Da ritirare" },
   { value: "in_consegna", label: "In consegna" },
   { value: "consegnata", label: "Consegnata" },
   { value: "in_giacenza", label: "In giacenza" },
 ];
 
 function UpdateDeliveryStatusDialog({ delivery }: UpdateDeliveryStatusDialogProps, ref: ForwardedRef<DialogActionsType>) {
-  const { mutateAsync: updateStatus, isLoading } = deliveryApi.usePutStatus(delivery?.id ?? "");
+  const { mutateAsync: updateStatus, isPending } = deliveryApi.usePutStatus(delivery?.id ?? "");
   const { control, handleSubmit, reset, formState: { errors } } = useForm<StatusFormValues>({
     defaultValues: { status: "" },
     mode: "onSubmit",
@@ -75,8 +76,8 @@ function UpdateDeliveryStatusDialog({ delivery }: UpdateDeliveryStatusDialogProp
         <Divider />
         <DialogActions sx={{ p: 2 }}>
           <Button onClick={handleClose}>Annulla</Button>
-          <Button type="submit" variant="contained" disabled={isLoading}>
-            {isLoading ? <CircularProgress size={24} /> : "Aggiorna"}
+          <Button type="submit" variant="contained" disabled={isPending}>
+            {isPending ? <CircularProgress size={24} /> : "Aggiorna"}
           </Button>
         </DialogActions>
       </FormWrapper>

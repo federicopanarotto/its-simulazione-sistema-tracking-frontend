@@ -13,6 +13,7 @@ interface DeliveryFiltersProps {
 const statusOptions: Array<{ value: DeliveryStatus | ""; label: string }> = [
   { value: "", label: "Tutti gli stati" },
   { value: "in_deposito", label: "In deposito" },
+  { value: "da_ritirare", label: "Da ritirare" },
   { value: "in_consegna", label: "In consegna" },
   { value: "consegnata", label: "Consegnata" },
   { value: "in_giacenza", label: "In giacenza" },

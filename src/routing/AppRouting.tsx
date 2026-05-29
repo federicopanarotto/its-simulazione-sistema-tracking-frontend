@@ -27,11 +27,10 @@ function AppRouting() {
             <Route path="/*" element={<Navigate to="/home" />} />
             <Route index path="/" element={<Navigate to="/dashboard" />} />
             
-            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/dashboard" element={<StatisticsPage />} />
 
             <Route path="/customers" element={<CustomersPage />} />
             <Route path="/deliveries" element={<DeliveriesPage />} />
-            <Route path="/statistics" element={<StatisticsPage />} />
 
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/settings" element={<SettingsPage />} />

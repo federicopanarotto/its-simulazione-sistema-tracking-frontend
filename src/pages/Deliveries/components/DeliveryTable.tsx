@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import {
   Table,
   TableBody,
@@ -30,6 +30,7 @@ import UpdateDeliveryStatusDialog from "./UpdateDeliveryStatusDialog";
 
 const statusConfig: Record<DeliveryStatus, { label: string; color: "default" | "success" | "warning" | "error" }> = {
   in_deposito: { label: "In deposito", color: "warning" },
+  da_ritirare: { label: "Da ritirare", color: "default" },
   in_consegna: { label: "In consegna", color: "default" },
   consegnata: { label: "Consegnata", color: "success" },
   in_giacenza: { label: "In giacenza", color: "error" },
