@@ -8,7 +8,6 @@ import {
   TextField,
   Typography,
   CircularProgress,
-  MenuItem,
   CardContent,
 } from "@mui/material";
 import { Controller, useForm, type SubmitHandler } from "react-hook-form";
@@ -20,7 +19,6 @@ import KeyOffIcon from "@mui/icons-material/KeyOff";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import PersonIcon from "@mui/icons-material/Person";
 import useRegistration from "../../../shared/api/auth/useRegistration";
-import BadgeIcon from "@mui/icons-material/Badge";
 
 interface RegistrationFormProps {
   successRegistration?: () => void;
@@ -44,7 +42,6 @@ function RegistrationForm({ successRegistration }: RegistrationFormProps) {
       username: "",
       password: "",
       confirmPassword: "",
-      role: "employee",
     },
     mode: "onSubmit",
   });
@@ -58,7 +55,6 @@ function RegistrationForm({ successRegistration }: RegistrationFormProps) {
         lastName: data.lastName,
         username: data.username,
         password: data.password,
-        role: data.role,
       });
       successRegistration?.();
     } catch (error) {
@@ -192,7 +188,7 @@ function RegistrationForm({ successRegistration }: RegistrationFormProps) {
             />
 
             {/* Role Select */}
-            <Controller
+            {/* <Controller
               control={control}
               name="role"
               rules={{ required: "Seleziona un ruolo" }}
@@ -224,7 +220,7 @@ function RegistrationForm({ successRegistration }: RegistrationFormProps) {
                   </Collapse>
                 </>
               )}
-            />
+            /> */}
 
             {/* Password */}
             <Controller

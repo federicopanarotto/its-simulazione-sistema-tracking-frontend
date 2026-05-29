@@ -30,7 +30,7 @@ function SideNavTitle({ onToggleDrawer }: SideNavTitleProps) {
         sx={{ ml: 1 }}
         color="textSecondary"
       >
-        React template
+        Tracking App
       </Typography>
     </Box>
   );

@@ -3,5 +3,4 @@ export interface IRegister {
   lastName: string,
   username: string;
   password: string;
-  role: "employee" | "manager";
 }
