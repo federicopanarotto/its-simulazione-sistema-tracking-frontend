@@ -6,6 +6,9 @@ import DashboardPage from "../pages/Dashboard/DashboardPage";
 import SettingsPage from "../pages/Settings/SettingsPage";
 import ProfilePage from "../pages/Profile/ProfilePage";
 import RegistrationPage from "../pages/Registration/RegistrationPage";
+import CustomersPage from "../pages/Customers/CustomersPage";
+import StatisticsPage from "../pages/Statistics/StatisticsPage";
+import DeliveriesPage from "../pages/Deliveries/DeliveriesPage";
 
 function AppRouting() {
   return (
@@ -20,6 +23,10 @@ function AppRouting() {
             <Route index path="/" element={<Navigate to="/dashboard" />} />
             
             <Route path="/dashboard" element={<DashboardPage />} />
+
+            <Route path="/customers" element={<CustomersPage />} />
+            <Route path="/deliveries" element={<DeliveriesPage />} />
+            <Route path="/statistics" element={<StatisticsPage />} />
 
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/settings" element={<SettingsPage />} />
