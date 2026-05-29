@@ -6,7 +6,7 @@ import type { ApiError } from "../../../shared/api/ApiError";
 
 export type TrackingRequest = {
   deliveryKey: string;
-  deliveryDate: string; // ISO date format
+  pickupDate: string;
 };
 
 export const trackingApi = {

@@ -18,10 +18,10 @@ interface TrackingFormProps {
 
 export const TrackingForm = ({ onSearch, isLoading }: TrackingFormProps) => {
   const [deliveryKey, setDeliveryKey] = useState("");
-  const [deliveryDate, setDeliveryDate] = useState("");
+  const [pickupDate, setPickupDate] = useState("");
   const [errors, setErrors] = useState<{
     deliveryKey?: string;
-    deliveryDate?: string;
+    pickupDate?: string;
   }>({});
 
   const validateForm = () => {
@@ -31,8 +31,8 @@ export const TrackingForm = ({ onSearch, isLoading }: TrackingFormProps) => {
       newErrors.deliveryKey = "Codice consegna obbligatorio";
     }
 
-    if (!deliveryDate) {
-      newErrors.deliveryDate = "Data consegna obbligatoria";
+    if (!pickupDate) {
+      newErrors.pickupDate = "Data ritiro obbligatoria";
     }
 
     setErrors(newErrors);
@@ -48,7 +48,7 @@ export const TrackingForm = ({ onSearch, isLoading }: TrackingFormProps) => {
 
     onSearch({
       deliveryKey: deliveryKey.trim(),
-      deliveryDate,
+      pickupDate: pickupDate,
     });
   };
 
@@ -76,17 +76,17 @@ export const TrackingForm = ({ onSearch, isLoading }: TrackingFormProps) => {
           />
 
           <TextField
-            label="Data Consegna"
+            label="Data Ritiro"
             type="date"
-            value={deliveryDate}
+            value={pickupDate}
             onChange={(e) => {
-              setDeliveryDate(e.target.value);
-              if (errors.deliveryDate) {
-                setErrors({ ...errors, deliveryDate: undefined });
+              setPickupDate(e.target.value);
+              if (errors.pickupDate) {
+                setErrors({ ...errors, pickupDate: undefined });
               }
             }}
-            error={!!errors.deliveryDate}
-            helperText={errors.deliveryDate}
+            error={!!errors.pickupDate}
+            helperText={errors.pickupDate}
             fullWidth
             disabled={isLoading}
             InputLabelProps={{ shrink: true }}
