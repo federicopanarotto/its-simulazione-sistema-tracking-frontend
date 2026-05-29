@@ -34,8 +34,8 @@ function EditDeliveryDialog({ delivery }: EditDeliveryDialogProps, ref: Forwarde
     if (!delivery) return;
     reset({
       customer: typeof delivery.customer === "string" ? null : delivery.customer,
-      pickupDate: new Date(delivery.pickupDate).toISOString().split("T")[0],
-      deliveryDate: new Date(delivery.deliveryDate).toISOString().split("T")[0],
+      pickupDate: delivery.pickupDate ? new Date(delivery.pickupDate).toISOString().split("T")[0] : "",
+      deliveryDate: delivery.deliveryDate ? new Date(delivery.deliveryDate).toISOString().split("T")[0] : "",
       status: delivery.status,
     });
   }, [delivery]);
@@ -50,8 +50,7 @@ function EditDeliveryDialog({ delivery }: EditDeliveryDialogProps, ref: Forwarde
       id: delivery.id,
       payload: {
         customer: customerValue,
-        pickupDate: new Date(data.pickupDate),
-        deliveryDate: new Date(data.deliveryDate),
+        deliveryDate: data.deliveryDate ? new Date(data.deliveryDate) : null,
         status: data.status,
       },
     } as any);

@@ -94,7 +94,6 @@ export default function DeliveryFormFields({
           control={control}
           name="deliveryDate"
           rules={{
-            required: "Data consegna obbligatoria",
             validate: (value) => {
               if (!pickupDate || !value) return true;
               return (
