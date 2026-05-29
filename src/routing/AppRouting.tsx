@@ -2,7 +2,6 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import LoginPage from "../pages/Login/LoginPage";
 import AuthUserGuard from "./guards/AuthUserGuard";
 import Layout from "../shared/ui/layout/Layout";
-import DashboardPage from "../pages/Dashboard/DashboardPage";
 import SettingsPage from "../pages/Settings/SettingsPage";
 import ProfilePage from "../pages/Profile/ProfilePage";
 import RegistrationPage from "../pages/Registration/RegistrationPage";
