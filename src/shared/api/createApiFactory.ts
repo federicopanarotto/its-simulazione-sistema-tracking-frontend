@@ -34,7 +34,7 @@ export const createApiFactory = <T, TPayload = Omit<T, 'id'>>(config: ApiConfig)
     },
 
     // GET DETAIL
-    useGetDetail: (id?: number | null) => {
+    useGetDetail: (id?: string | number | null) => {
       return useQuery({
         queryKey: [queryKey, 'DETAIL', id],
         queryFn: async () => {
@@ -70,7 +70,7 @@ export const createApiFactory = <T, TPayload = Omit<T, 'id'>>(config: ApiConfig)
       const queryClient = useQueryClient();
       return useMutation({
         mutationKey: [queryKey, 'UPDATE'],
-        mutationFn: async ({ id, payload }: { id: number; payload: Partial<TPayload> }) => {
+        mutationFn: async ({ id, payload }: { id: string | number; payload: Partial<TPayload> }) => {
           const response = await client.put(`${baseEndpoint}/${id}`, payload);
           return response.data;
         },
@@ -90,7 +90,7 @@ export const createApiFactory = <T, TPayload = Omit<T, 'id'>>(config: ApiConfig)
       const queryClient = useQueryClient();
       return useMutation({
         mutationKey: [queryKey, 'DELETE'],
-        mutationFn: async (id: number) => {
+        mutationFn: async (id: string | number) => {
           const response = await client.delete(`${baseEndpoint}/${id}`);
           return response.data;
         },

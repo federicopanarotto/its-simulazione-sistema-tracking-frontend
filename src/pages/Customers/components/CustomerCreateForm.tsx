@@ -1,4 +1,4 @@
-import { Card, Typography, Button, CircularProgress } from "@mui/material";
+import { Card, Button, CircularProgress } from "@mui/material";
 import CustomerFormFields from "./CustomerFormFields";
 import { useSnackbar } from "../../../context/SnackbarContext";
 import { useForm, type SubmitHandler } from "react-hook-form";
@@ -52,10 +52,6 @@ export function CustomerCreateForm({ onSuccess }: CustomerCreateFormProps) {
       }}
     >
       <FormWrapper handleSubmit={handleSubmit(onSubmit)}>
-        <Typography variant="h5" textAlign="center" sx={{ mb: 3 }}>
-          Nuovo Cliente
-        </Typography>
-
         <CustomerFormFields control={control} errors={errors} />
 
         <Button
