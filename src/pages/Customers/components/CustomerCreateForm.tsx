@@ -6,7 +6,11 @@ import FormWrapper from "../../../shared/ui/form/FormWrapper";
 import type { ICustomer } from "../api/ICustomer";
 import { customerApi } from "../api/customerApi";
 
-export function CustomerCreateForm() {
+interface CustomerCreateFormProps {
+  onSuccess?: () => void;
+}
+
+export function CustomerCreateForm({ onSuccess }: CustomerCreateFormProps) {
   const { showSnackbar } = useSnackbar();
   const { mutateAsync: createCustomer, isPending } = customerApi.usePost();
 
@@ -33,6 +37,7 @@ export function CustomerCreateForm() {
       await createCustomer(data as any);
       reset();
       showSnackbar("Cliente creato con successo", "success");
+      onSuccess?.();
     } catch (error) {
       showSnackbar("Errore durante la creazione", "error");
     }

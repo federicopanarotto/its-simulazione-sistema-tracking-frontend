@@ -22,41 +22,81 @@ export default function CustomerFormFields({ control, errors }: FormFieldsProps)
       <Controller
         control={control}
         name="address"
+        rules={{ required: "Indirizzo obbligatorio" }}
         render={({ field }) => (
-          <TextField {...field} label="Indirizzo" fullWidth />
+          <TextField
+            {...field}
+            label="Indirizzo"
+            fullWidth
+            error={!!errors.address}
+            helperText={errors.address?.message}
+          />
         )}
       />
 
       <Controller
         control={control}
         name="city"
+        rules={{ required: "Città obbligatoria" }}
         render={({ field }) => (
-          <TextField {...field} label="Città" fullWidth />
+          <TextField
+            {...field}
+            label="Città"
+            fullWidth
+            error={!!errors.city}
+            helperText={errors.city?.message}
+          />
         )}
       />
 
       <Controller
         control={control}
         name="province"
+        rules={{ required: "Provincia obbligatoria" }}
         render={({ field }) => (
-          <TextField {...field} label="Provincia" fullWidth />
+          <TextField
+            {...field}
+            label="Provincia"
+            fullWidth
+            error={!!errors.province}
+            helperText={errors.province?.message}
+          />
         )}
       />
 
       <Controller
         control={control}
         name="phone"
+        rules={{ required: "Telefono obbligatorio" }}
         render={({ field }) => (
-          <TextField {...field} label="Telefono" fullWidth />
+          <TextField
+            {...field}
+            label="Telefono"
+            fullWidth
+            error={!!errors.phone}
+            helperText={errors.phone?.message}
+          />
         )}
       />
 
       <Controller
         control={control}
         name="email"
-        rules={{ pattern: { value: /^[^@\s]+@[^@\s]+\.[^@\s]+$/, message: "Email non valida" } }}
+        rules={{
+          required: "Email obbligatoria",
+          pattern: {
+            value: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
+            message: "Email non valida",
+          },
+        }}
         render={({ field }) => (
-          <TextField {...field} label="Email" fullWidth error={!!errors.email} helperText={errors.email?.message} />
+          <TextField
+            {...field}
+            label="Email"
+            fullWidth
+            error={!!errors.email}
+            helperText={errors.email?.message}
+          />
         )}
       />
 
@@ -64,7 +104,14 @@ export default function CustomerFormFields({ control, errors }: FormFieldsProps)
         control={control}
         name="notes"
         render={({ field }) => (
-          <TextField {...field} label="Note" fullWidth multiline rows={3} />
+          <TextField
+            {...field}
+            label="Note"
+            fullWidth
+            multiline
+            rows={3}
+            helperText={errors.notes?.message}
+          />
         )}
       />
     </Stack>
